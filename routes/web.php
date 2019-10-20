@@ -19,3 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/personal', 'UserController@personal');
+Route::get('/profile', 'UserController@profile');
+Route::post('/profile','UserController@store');
