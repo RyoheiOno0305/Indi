@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\ProfileRequest;
 use App\Profile;
-use App\User;
+use Illuminate\Http\Request;
+use App\Profile;
 use Auth;
+use App\Http\Requests\ProfileRequest;
 
-
-class UserController extends Controller
+class ProfileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-        
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +18,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::all();
-        return view('personal_page.index')->with('users', $users); 
+        
     }
 
     /**
@@ -35,8 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $user_id = Auth::id();
-        return view('personal_page.profile')->with('user_id', $user_id);
+        
     }
 
     /**
@@ -45,23 +37,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProfileRequest $request, User $user)
+    public function store(Request $request)
     {
-        // 画像
-        $request->image->storeAs('public/profile_images', Auth::id() . '.jpg');
-
-        // 自己紹介文
-        $profile = new Profile();
-        $profile->self_introduction = $request->self_introduction;
-
-        // ユーザーID
-        $user_id = Auth::id();
-        $profile->user_id = $request->user_id;
-
-        // 保存
-        $profile->save();
-
-        return redirect("/user/{$user_id}")->with('success','成功しました');
+        //
     }
 
     /**
@@ -70,15 +48,9 @@ class UserController extends Controller
      * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Profile $profile)
     {
         //
-        $user_id = Auth::id();
-
-        $profile = Profile::where('user_id',$user_id)->latest()->first();
-
-
-        return view('personal_page.personal')->with(['user_id'=>$user_id, 'profile'=>$profile]);
     }
 
     /**
@@ -87,7 +59,7 @@ class UserController extends Controller
      * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Profile $profile)
     {
         //
     }

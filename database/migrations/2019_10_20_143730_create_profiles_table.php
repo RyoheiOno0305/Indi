@@ -15,8 +15,6 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
-            // 画像はDBに保存しないほうが良いという理由で削除
-            // $table->string('image');
             $table->text('self_introduction');
             $table->timestamps();
             $table->unsignedInteger('user_id');

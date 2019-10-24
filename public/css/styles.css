@@ -1,0 +1,31 @@
+@media screen and (max-width:639px)
+{
+/*スマホ用*/
+}
+
+@media only screen and (min-width:640px) and (max-width:1023px) 
+{
+/* tablet用 */
+}
+            
+@media screen and (min-width:1024px)
+{
+/*pc用*/
+.profile-box p{
+    display: inline-block;
+    width:200px;
+}
+.profile-image{
+    
+    border:solid 1px black;
+    margin-right:30px;
+}
+
+.introduction{
+    width:200px;
+    display:inline-block;
+    float:left;
+}
+
+
+}

@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <title>Indi/トップページ</title>
   </head>
   <body>
@@ -40,8 +41,16 @@
   <div class="offset-box offset-md-1 col-md-10">
 
     <!-- プロフィール -->
-    <div id="profile-image" class="offset-md-1 col-md-3"></div>
-    <div id="self-introduction" class="col-md-7"></div>
+    <div class="profile-box" class="offset-md-1">
+      <p>
+        <img class="profile-image" src="storage/profile_images/{{$user_id}}.jpg" width="200px" >
+      </p>
+        @if(empty($profile->self_introduction))
+          <p>プロフィールを登録しましょう</p>
+        @else
+          <p class="introduction">{{$profile->self_introduction}}</p>
+        @endif
+    </div>
     
     <!-- タブリスト -->
     <div class="tabs-list">

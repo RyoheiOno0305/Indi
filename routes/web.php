@@ -17,7 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/user/{user}/create', 'UserController@create');
+
+Route::resource('/user', 'UserController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/personal', 'UserController@personal');
 Route::get('/profile', 'UserController@profile');
 Route::post('/profile','UserController@store');
+
+Route::resource('profile', 'PhotoController');
+

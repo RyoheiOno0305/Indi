@@ -22,9 +22,9 @@
   </div>
   @endif
 
-  <form method="POST" action="/profile" enctype="multipart/form-data" >
+  <form method="POST" action="/user" enctype="multipart/form-data" >
       {{ csrf_field() }}
-      <input type="hidden" name="user_id" value="{{$user_id}}">
+      <input type="hidden" name="user_id" value={{ $user_id }}>
       <input type="file" name="image">
       <br>
       <textarea name="self_introduction" id="self-introduction" cols="30" rows="10"></textarea>
