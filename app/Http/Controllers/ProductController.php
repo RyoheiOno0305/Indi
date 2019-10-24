@@ -9,13 +9,10 @@ class ProductController extends Controller
 {
 
     public function search(){
-
         $client = new Client();
         $response = $client->request('GET',
         
         )
-
-
     }
 
 
