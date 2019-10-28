@@ -20,8 +20,6 @@
   --swiper-theme-color: #007aff;
 }
 .swiper-container {
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
   overflow: hidden;
   list-style: none;
@@ -45,6 +43,8 @@
 .swiper-wrapper {
   transform: translate3d(0px, 0, 0);
 }
+/* 新たに追加 */
+
 .swiper-container-multirow > .swiper-wrapper {
   flex-wrap: wrap;
 }

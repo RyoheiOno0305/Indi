@@ -26,32 +26,28 @@
       {{$response['count']}}件見つかりました。
     </p>
 
-    <div class="offset-md-1">
+    <div class="offset-md-1 col-md-10">
       @foreach($response as $item)
-      
-        <!-- @foreach($item['mediumImageUrls'] as $image)
-          <ul class="slider">
-            <li><a href="#"><img src="{{$image['imageUrl']}}" alt=""></a></li>
-          </ul>
-        @endforeach  -->
 
-
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            @foreach($item["mediumImageUrls"] as $image)
-              <div class="swiper-slide"><img src="{{$image['imageUrl']}}" alt=""></div>
-            @endforeach
+        <div class="product-box">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              @foreach($item["mediumImageUrls"] as $image)
+                <div class="swiper-slide"><img src="{{$image['imageUrl']}}" alt=""></div>
+              @endforeach
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
           </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+          <p><a href="{{$item['itemUrl']}}">{{$item["itemName"]}}</a></p>
+          <p>{{$item['itemPrice']}}円</p>
+          <p>{{$item['reviewAverage']}}</p>
         </div>
       
         
         
-        <p class="item-title">{{$item['itemName']}}</p>
-        <p class="item-title">{{$item['catchcopy']}}</p>
-        <br>
-        <br>          
+        
+
       @endforeach
     </div>
 
@@ -66,7 +62,8 @@
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
-        }
+        },
+        loop: true,
       });
     </script>
   </body>
