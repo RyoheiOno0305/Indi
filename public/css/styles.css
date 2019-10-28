@@ -27,5 +27,24 @@
     float:left;
 }
 
+.swiper-container{
+    width:268px;
+    margin-left:50px;
+}
+
+.swiper-slide > img{
+    margin-left:70px;
+}
+
+.product-box{
+    display:inline-block;
+    width:32%; 
+    margin-left:10px;
+    border:solid 1px gray;
+    margin-bottom:10px;
+    padding-top:10px;
+}
+
+
 
 }

@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // 商品検索
 Route::get('/search', 'ProductController@search');
-Route::post('search', 'ProductController@');
-Route::get('/result', 'ProductController@rakuten_result');
+Route::post('/results', 'ProductController@results');
+Route::get('/results', 'ProductController@results');
 
 
