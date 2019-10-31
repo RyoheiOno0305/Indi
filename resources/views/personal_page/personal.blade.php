@@ -51,6 +51,34 @@
           <p class="introduction">{{$profile->self_introduction}}</p>
         @endif
     </div>
+
+    
+    <!-- フォロー・アンフォロー機能 -->
+    @if($login_user->id !== $user_id)
+    <div class="d-flex justify-content-end flex-grow-1">
+        @if ($login_user->isFollowing($user_id))
+            <form action="{{ route('unfollow', ['id' => $user_id]) }}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+
+                <button type="submit" class="btn btn-danger">フォロー解除</button>
+            </form>
+        @else
+            <form action="{{ route('follow', ['id' => $user_id]) }}" method="POST">
+                {{ csrf_field() }}
+
+                <button type="submit" class="btn btn-primary">フォローする</button>
+            </form>
+        @endif
+    </div>
+    @else
+        <div></div>
+    @endif
+    
+
+    <div id="follow-button-box">
+        <button class="btn btn-default">フォロー</button>
+    </div>
     
     <!-- タブリスト -->
     <div class="tabs-list">
@@ -80,14 +108,23 @@
         <div>お気に入り</div>
       </div>
       <div id="follow" class="tab-pane">
-        <div>フォロー</div>
+        <ul>
+        @foreach($follows as $follow)
+          <li>{{$follow->name}}</li>
+        @endforeach
+        </ul>
       </div>
       <div id="follower" class="tab-pane">
-        <div>フォロワー</div>
+        <ul>
+        @foreach($followers as $follower)
+          <li>{{$follower->name}}</li>
+        @endforeach
+        </ul>
+        
       </div>
     </div>
       
-      <!-- <div class='product-list'>プロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリストプロダクトリスト</div> -->
+      
     
   
 

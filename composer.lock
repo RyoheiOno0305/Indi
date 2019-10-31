@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "6faf1f89fbc811a87bd2e942904f4792",
-=======
-    "content-hash": "e4fe32e61c290a73c9174daee574252f",
->>>>>>> feature/product_search
+    "content-hash": "557bf438cac113e4b9fefbd84345d71e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1561,33 +1557,6 @@
             "time": "2018-10-13T15:16:03+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "ralouphie/getallheaders",
-            "version": "3.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ralouphie/getallheaders.git",
-                "reference": "120b605dfeb996808c31b6477290a714d356e822"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
-                "reference": "120b605dfeb996808c31b6477290a714d356e822",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "^5 || ^6.5"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/getallheaders.php"
-                ]
-=======
             "name": "rakuten-ws/rws-php-sdk",
             "version": "1.1.0",
             "source": {
@@ -1619,7 +1588,6 @@
                 "psr-0": {
                     "RakutenRws_": "lib/"
                 }
->>>>>>> feature/product_search
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1627,14 +1595,6 @@
             ],
             "authors": [
                 {
-<<<<<<< HEAD
-                    "name": "Ralph Khattar",
-                    "email": "ralph.khattar@gmail.com"
-                }
-            ],
-            "description": "A polyfill for getallheaders.",
-            "time": "2019-03-08T08:55:37+00:00"
-=======
                     "name": "Shogo Kawahara",
                     "email": "shogo.a.kawahara@mail.rakuten.com"
                 }
@@ -1647,7 +1607,46 @@
                 "webapi"
             ],
             "time": "2015-06-08T05:45:03+00:00"
->>>>>>> feature/product_search
+        },
+        {
+            "name": "ralouphie/getallheaders",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5 || ^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/getallheaders.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "A polyfill for getallheaders.",
+            "time": "2019-03-08T08:55:37+00:00"
         },
         {
             "name": "ramsey/uuid",

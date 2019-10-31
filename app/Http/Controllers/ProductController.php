@@ -14,12 +14,7 @@ class ProductController extends Controller
 {
 
     public function search(){
-<<<<<<< HEAD
-        $client = new Client();
-        $response = $client->request('GET',
-        
-        )
-=======
+
         return view('search_page.search');
     }
 
@@ -74,7 +69,7 @@ class ProductController extends Controller
             echo 'Error:'.$response->getMessage();
         }
 
->>>>>>> feature/product_search
+
     }
 
 

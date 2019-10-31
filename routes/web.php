@@ -19,6 +19,9 @@ Auth::routes();
 
 // プロフィール
 Route::resource('/user', 'UserController');
+// フォロー/フォロー解除を追加
+Route::post('users/{user}/follow', 'FollowUserController@follow')->name('follow');
+Route::delete('users/{user}/unfollow', 'FollowUserController@unfollow')->name('unfollow');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

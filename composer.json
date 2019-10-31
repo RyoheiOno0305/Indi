@@ -10,11 +10,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-<<<<<<< HEAD
-        "guzzlehttp/guzzle": "~6.0"
-=======
+        "guzzlehttp/guzzle": "~6.0",
         "rakuten-ws/rws-php-sdk": "1.*"
->>>>>>> feature/product_search
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

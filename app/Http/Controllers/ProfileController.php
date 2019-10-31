@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 use Illuminate\Http\Request;
-use App\Profile;
 use Auth;
 use App\Http\Requests\ProfileRequest;
 

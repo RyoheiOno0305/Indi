@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Profile;
 use App\User;
+use App\FollowUser;
 use Auth;
 
 
@@ -73,12 +74,22 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
-        $user_id = Auth::id();
+        // 現在のページのユーザーID
+        $user_id = $user->id;
 
+        // ログインしているユーザー情報
+        $login_user = Auth::user();
+
+        // プロフィール情報
         $profile = Profile::where('user_id',$user_id)->latest()->first();
 
+        // フォローを取得
+        $follows = $user->follows()->get();
 
-        return view('personal_page.personal')->with(['user_id'=>$user_id, 'profile'=>$profile]);
+        // フォロワーを取得
+        $followers = $user->followers()->get();
+
+        return view('personal_page.personal')->with(['user_id'=>$user_id, 'profile'=>$profile, 'login_user'=>$login_user, 'follows'=>$follows, 'followers'=>$followers]);
     }
 
     /**
