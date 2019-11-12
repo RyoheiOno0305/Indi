@@ -43,11 +43,6 @@
           <p>{{$item['itemPrice']}}円</p>
           <p>{{$item['reviewAverage']}}</p>
         </div>
-      
-        
-        
-        
-
       @endforeach
     </div>
 

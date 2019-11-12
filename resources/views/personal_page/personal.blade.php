@@ -75,10 +75,9 @@
         <div></div>
     @endif
     
-
-    <div id="follow-button-box">
-        <button class="btn btn-default">フォロー</button>
-    </div>
+    @if($user_id !== $login_user->id)
+      <a href="/chat/{{$user_id}}"><button type="button" class="btn btn-primary">Chat</button></a>
+    @endif
     
     <!-- タブリスト -->
     <div class="tabs-list">
