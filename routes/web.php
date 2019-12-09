@@ -19,22 +19,29 @@ Auth::routes();
 
 // プロフィール
 Route::resource('/user', 'UserController');
+
 // フォロー/フォロー解除を追加
 Route::post('users/{user}/follow', 'FollowUserController@follow')->name('follow');
 Route::delete('users/{user}/unfollow', 'FollowUserController@unfollow')->name('unfollow');
 
+// ホーム
 Route::get('/home', 'HomeController@index')->name('home');
 
-// 商品検索
+// 商品検索・保存
+   // 楽天
 Route::get('/search', 'ProductController@search');
-Route::post('/results', 'ProductController@results');
-Route::get('/results', 'ProductController@results');
+Route::post('/search', 'ProductController@toResults');
+Route::get('/products/{keyword}', 'ProductController@results')->name('toResults');
+Route::post('/products/{keyword}', 'ProductController@results');
 
-// チャット機能
-// Route::get('/chat/{recieve}', 'ChatController@index')->name('chat');
-// Route::post('/chat/send', 'ChatController@store')->name ('chatSend');
+// 商品お気に入り機能
+Route::post('/products/{keyword}/favorite', 'FavoriteController@favorite')->name('favorite');
+Route::delete('/products/{keyword}/unfavorite', 'FavoriteController@unfavorite')->name('unfavorite');
 
+// チャット
 Route::get('chat', 'ChatController@index');
-
 Route::get('ajax/chat', 'Ajax\ChatController@index'); // メッセージ一覧を取得
 Route::post('ajax/chat', 'Ajax\ChatController@create'); // チャット登録
+
+
+

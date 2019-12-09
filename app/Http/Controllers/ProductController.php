@@ -4,76 +4,78 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Exception\ClientException;
 use RakutenRws_Client; 
+use App\Http\Requests\ProductRequest;
+use Auth;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-    public function search(){
-
+    public function search()
+    {
         return view('search_page.search');
     }
 
-    public function results(Request $request){
+    public function toResults(Request $request){
+        $keyword = $request->keyword;
+        return redirect()->route('toResults', ['keyword'=>$keyword]);
+    }
 
-        // $client = new Client();
-        // $response = $client->request('GET', 
-        // 'https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706?',
-        // array(
-            
-        //     "query"=>[
-        //             'applicationId='=>'1067959486620993146',
-        //             'formatVersion'=>'2',
-        //             'keyword'=>$request->keyword,
-        //             'imageFlag'=>1
-        //     ],
-        //     "http_errors" => false,
-        // )
-        // );
+    public function results($keyword)
+    {
 
-        
-        // $json = $response->getBody()->getContents();
-        // $results = json_decode($json, true);
-        // // return view('search_page.product')->with('results',$results);
-        // var_dump($results);
-
-
-
-
-
-
-
-        
-        
         $client = new RakutenRws_Client();
         // アプリID (デベロッパーID) をセットします
         $client->setApplicationId('1067959486620993146');
         
         // 楽天市場商品検索API では operation として 'IchibaItemSearch' を指定してください。
-
         $response = $client->execute('IchibaItemSearch', array(
-            'keyword' => $request->keyword
+            'keyword' => $keyword
         ));
         
         // レスポンスが正常かどうかを isOk() で確認することができます
         if ($response->isOk()){
 
-            return view('search_page.product')->with('response',$response);
+            $login_user = Auth::user();
+            // $keyword = $request->keyword;
+            return view('search_page.products')->with(['response'=>$response, 'login_user'=>$login_user, 'keyword'=>$keyword]);
             
         } else {
             // getMessage() でレスポンスメッセージを取得することができます
             echo 'Error:'.$response->getMessage();
         }
-
-
     }
 
+    // public function keywordResults($keyword)
+    // {
+    //     $client = new RakutenRws_Client();
+    //     // アプリID (デベロッパーID) をセットします
+    //     $client->setApplicationId('1067959486620993146');
+        
+    //     // 楽天市場商品検索API では operation として 'IchibaItemSearch' を指定してください。
+    //     $response = $client->execute('IchibaItemSearch', array(
+    //         'keyword' => $keyword
+    //     ));
+        
+    //     // レスポンスが正常かどうかを isOk() で確認することができます
+    //     if ($response->isOk()){
+
+    //         $login_user = Auth::user();
+    //         return view('search_page.products')->with(['response'=>$response, 'login_user'=>$login_user, 'keyword'=>$keyword]);
+            
+    //     } else {
+    //         // getMessage() でレスポンスメッセージを取得することができます
+    //         echo 'Error:'.$response->getMessage();
+    //     } 
+    // }
 
 
+
+    // ↓はとりあえず無視
     /**
      * Display a listing of the resource.
      *
@@ -100,9 +102,10 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+
+
     }
 
     /**
@@ -114,6 +117,8 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
+        
+        return view('search_page.each_product');
     }
 
     /**

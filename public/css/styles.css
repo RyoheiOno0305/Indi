@@ -11,22 +11,21 @@
 @media screen and (min-width:1024px)
 {
 /*pc用*/
-.profile-box p{
-    display: inline-block;
-    width:200px;
+
+/* プロフィール personal.blade.php */
+
+
+.profile-box{
+    margin-bottom: 20px ;
 }
-.profile-image{
-    
-    border:solid 1px black;
-    margin-right:30px;
-}
+
 
 .introduction{
-    width:200px;
     display:inline-block;
-    float:left;
+    width:200px;
 }
 
+/* 製品一覧　products.blade.php */
 .swiper-container{
     width:268px;
     /* margin-left:40px; */
@@ -39,12 +38,18 @@
 
 .product-box{
     display:inline-block;
-    width:32%; 
+    width:30%; 
     margin-left:10px;
     border:solid 1px gray;
     margin-bottom:10px;
     padding-top:10px;
 }
+
+.count{
+    margin:10px;
+}
+
+
 
 
 

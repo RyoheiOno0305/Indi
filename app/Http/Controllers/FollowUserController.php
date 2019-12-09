@@ -9,10 +9,7 @@ use Illuminate\Http\Request;
 
 class FollowUserController extends Controller
 {
-    //
-    
-    
-
+    //フォロー
     public function follow(User $user)
     {
         $follower = auth()->user();

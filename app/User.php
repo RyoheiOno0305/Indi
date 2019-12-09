@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Product;
 
 class User extends Authenticatable
 {
@@ -61,4 +62,38 @@ class User extends Authenticatable
     {
         return (boolean) $this->followers()->where('following_id', $user_id)->first(['id']);
     }
+
+
+
+
+    // プロダクト関係
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'likes', 'user_id', 'product_id');
+    }
+
+    // お気にいり
+    public function like($product_id) 
+    {
+        return $this->products()->attach($product_id);
+    }
+
+    // お気に入り解除
+    public function unlike($product_id)
+    {
+        return $this->products()->detach($product_id);
+    }
+
+    // お気に入りしているか
+    public function isLiking($product_id) 
+    {
+        return (boolean) $this->products()->where('product_id', $product_id)->first(['id']);
+    }
+
+    // itemCodeによるお気に入り確認
+    public function itemCodeLiking($itemCode)
+    {
+        return (boolean) $this->products()->where('itemCode', $itemCode)->first(['id']); 
+    }
+    
 }
