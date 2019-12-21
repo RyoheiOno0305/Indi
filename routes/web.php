@@ -39,9 +39,12 @@ Route::post('/products/{keyword}/favorite', 'FavoriteController@favorite')->name
 Route::delete('/products/{keyword}/unfavorite', 'FavoriteController@unfavorite')->name('unfavorite');
 
 // チャット
-Route::get('chat', 'ChatController@index');
-Route::get('ajax/chat', 'Ajax\ChatController@index'); // メッセージ一覧を取得
-Route::post('ajax/chat', 'Ajax\ChatController@create'); // チャット登録
+Route::get('chat/{recieve}', 'ChatController@index')->name('chat');
+Route::get('ajax/chat/{recieve}', 'Ajax\ChatController@index'); // メッセージ一覧を取得
+Route::post('ajax/chat/{recieve}', 'Ajax\ChatController@create'); // チャット登録
+
+Route::get('json/return', 'ChatController@json');
+
 
 
 

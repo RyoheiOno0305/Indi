@@ -14,8 +14,10 @@ class CreateMessagesTable extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('body'); // メッセージ本文
+            $table->bigIncrements('id');
+            $table->bigInteger('send')->comment('送信者id');
+            $table->bigInteger('recieve')->comment('受信者id');
+            $table->text('message')->comment('メッセージ');
             $table->timestamps();
         });
     }

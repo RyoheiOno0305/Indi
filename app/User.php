@@ -95,5 +95,12 @@ class User extends Authenticatable
     {
         return (boolean) $this->products()->where('itemCode', $itemCode)->first(['id']); 
     }
+
+    
+
+    // チャット関連
+    public function messages(){
+        return $this->belongsTo('App\Message');
+    }
     
 }

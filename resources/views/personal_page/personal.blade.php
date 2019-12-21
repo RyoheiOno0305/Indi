@@ -51,7 +51,7 @@
     @endif
     
     @if($user_id !== $login_user->id)
-      <a href="/chat"><button type="button" class="btn btn-primary">Chat</button></a>
+      <a href="{{ route('chat',['recieve' => $user_id]) }}"><button type="button" class="btn btn-primary">Chat</button></a>
     @endif
     
     <!-- タブリスト -->

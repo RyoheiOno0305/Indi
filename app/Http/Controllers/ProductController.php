@@ -41,7 +41,6 @@ class ProductController extends Controller
         if ($response->isOk()){
 
             $login_user = Auth::user();
-            // $keyword = $request->keyword;
             return view('search_page.products')->with(['response'=>$response, 'login_user'=>$login_user, 'keyword'=>$keyword]);
             
         } else {
@@ -49,30 +48,6 @@ class ProductController extends Controller
             echo 'Error:'.$response->getMessage();
         }
     }
-
-    // public function keywordResults($keyword)
-    // {
-    //     $client = new RakutenRws_Client();
-    //     // アプリID (デベロッパーID) をセットします
-    //     $client->setApplicationId('1067959486620993146');
-        
-    //     // 楽天市場商品検索API では operation として 'IchibaItemSearch' を指定してください。
-    //     $response = $client->execute('IchibaItemSearch', array(
-    //         'keyword' => $keyword
-    //     ));
-        
-    //     // レスポンスが正常かどうかを isOk() で確認することができます
-    //     if ($response->isOk()){
-
-    //         $login_user = Auth::user();
-    //         return view('search_page.products')->with(['response'=>$response, 'login_user'=>$login_user, 'keyword'=>$keyword]);
-            
-    //     } else {
-    //         // getMessage() でレスポンスメッセージを取得することができます
-    //         echo 'Error:'.$response->getMessage();
-    //     } 
-    // }
-
 
 
     // ↓はとりあえず無視

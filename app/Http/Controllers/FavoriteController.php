@@ -11,14 +11,14 @@ use GuzzleHttp\Exception\ClientException;
 use RakutenRws_Client; 
 use App\Http\Requests\ProductRequest;
 use Auth;
+use Log;
 
 class FavoriteController extends Controller
 {
     //
     public function favorite(ProductRequest $request, $keyword){
-        // dd($request->itemCode);
         // プロダクト保存分岐
-        $checkdata = Product::where('itemName', $request->itemName)->exists();
+        $checkdata = Product::where('itemCode', $request->itemCode)->exists();
         if ($checkdata) {
             // お気に入り機能
             $product = Product::where('itemCode', $request->itemCode)->first();
@@ -64,7 +64,6 @@ class FavoriteController extends Controller
         if ($is_liking) {
             // お気に入りしているプロダクトを解除する
             $login_user->unlike($product_id);
-
             return redirect()->route('toResults', ['keyword'=>$keyword])->with('success', '成功しました');
         }
     }

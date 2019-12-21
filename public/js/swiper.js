@@ -10,6 +10,8 @@
  * Released on: October 26, 2019
  */
 
+
+ 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -27,6 +29,9 @@
    *
    * Released on: July 18, 2018
    */
+
+  
+
   var doc = (typeof document === 'undefined') ? {
     body: {},
     addEventListener: function addEventListener() {},

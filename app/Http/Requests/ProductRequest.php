@@ -25,7 +25,8 @@ class ProductRequest extends FormRequest
     {
         return [
             //
-            'itemCode' => 'unique:products,itemCode'
         ];
     }
+
+    
 }

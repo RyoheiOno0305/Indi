@@ -46,5 +46,17 @@
         </div>
       @endforeach
     </div>
-@endsection
 
+
+<script src="{{ asset('js/swiper.js') }}"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+            },
+            loop: true,
+        });
+    </script>
+
+@endsection

@@ -38,6 +38,7 @@ return [
             'options' => [
                 'cluster' => 'ap3',
                 'useTLS' =>false,
+                'encrypted' => false,
             ],
         ],
 
